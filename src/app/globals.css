@@ -2,26 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@keyframes dropdown {
+  0% {
+    transform: scaleY(0)
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  80% {
+    transform: scaleY(1.1)
+  }
+
+  100% {
+    transform: scaleY(1)
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+}
+
+.c-container-box {
+  max-width: 1200px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: auto;
+}
+
+nav a,
+nav p {
+  font-size: 1.5rem;
+  color: #e1e1e1;
+  font-weight: 600;
+}
+
+.nav-item:hover>.nav-item-dropdown {
+  display: block;
+}
+
+nav .nav-links,
+nav .nav-item-dropdown {
+  background-color: #d02f45;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.nav-item-dropdown {
+  position: absolute;
+  padding: 1rem;
+  left: -1rem;
+  animation: dropdown 300ms ease-in-out forwards;
+  transform-origin: top center;
+}
+
+nav .nav-item {
+  cursor: pointer;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.c-container-fluid {
+  width: 100%;
 }
